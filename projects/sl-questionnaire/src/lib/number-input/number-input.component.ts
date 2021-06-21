@@ -1,0 +1,45 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Question } from '../interfaces/questionnaire.type';
+import { SlQuestionnaireService } from '../sl-questionnaire.service';
+
+@Component({
+  selector: 'sl-number-input',
+  templateUrl: './number-input.component.html',
+  styleUrls: ['./number-input.component.css'],
+})
+export class NumberInputComponent implements OnInit {
+  @Input() placeholder;
+  response: string;
+  @Input() questionnaireForm: FormGroup;
+  @Input() question: Question;
+  constructor(private qService: SlQuestionnaireService) {}
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.questionnaireForm.addControl(
+        this.question._id,
+        new FormControl(this.question.value || null, [
+          this.qService.validate(this.question),
+        ])
+      );
+      this.question.startTime = this.question.startTime
+        ? this.question.startTime
+        : Date.now();
+    });
+  }
+  onChange(e: Event) {
+    let value = (e.target as HTMLInputElement).value;
+    this.question.value = value;
+
+    this.question.endTime = Date.now();
+  }
+
+  get isValid(): boolean {
+    return this.questionnaireForm.controls[this.question._id].valid;
+  }
+
+  get isTouched(): boolean {
+    return this.questionnaireForm.controls[this.question._id].touched;
+  }
+}
