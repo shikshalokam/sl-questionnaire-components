@@ -3,27 +3,30 @@ import { Input } from '@angular/core';
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Question } from '../interfaces/questionnaire.type';
+import { SlTranslateService } from '../services/translate.service';
 import { SlQuestionnaireService } from '../sl-questionnaire.service';
 
 @Component({
   selector: 'sl-radio-input',
   templateUrl: './radio-input.component.html',
-  styleUrls: ['./radio-input.component.css'],
+  styleUrls: ['./radio-input.component.scss'],
 })
 export class RadioInputComponent implements OnInit {
   @Input() options: any;
   @Input() questionnaireForm: FormGroup;
   @Input() question: Question;
-  @Input() hintCloseText: string;
+  hintCloseText: string;
   @Output() dependentParent = new EventEmitter<Question>();
   isDimmed: any;
   hint: any;
 
   constructor(
     public qService: SlQuestionnaireService,
+    public translate: SlTranslateService
   ) {}
 
   ngOnInit() {
+    this.hintCloseText = this.translate['frmelmnts'].btn?.close;
     setTimeout(() => {
       this.questionnaireForm.addControl(
         this.question._id,
@@ -61,5 +64,3 @@ export class RadioInputComponent implements OnInit {
     }
   }
 }
-
-

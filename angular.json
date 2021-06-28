@@ -42,6 +42,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "sl-questionnaire"
+    }
+  },
+  "defaultProject": "sl-questionnaire",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

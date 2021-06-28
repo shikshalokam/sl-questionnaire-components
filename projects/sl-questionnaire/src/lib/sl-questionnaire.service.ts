@@ -10,6 +10,7 @@ import {
   providedIn: 'root',
 })
 export class SlQuestionnaireService {
+  private _submissionId: string;
   constructor() {}
   validate = (data: Question): ValidatorFn => {
     return (control: AbstractControl): { [key: string]: any } | null => {
@@ -57,5 +58,12 @@ export class SlQuestionnaireService {
   public testRegex(regexExpression: RegExp, value: string): boolean {
     const regex = new RegExp(regexExpression);
     return regex.test(value);
+  }
+
+  setSubmissionId(submissionId: any) {
+    this._submissionId = submissionId;
+  }
+  getSubmissionId() {
+    return this._submissionId;
   }
 }
