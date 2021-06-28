@@ -1,12 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Question, Validation } from '../interfaces/questionnaire.type';
+import { SlTranslateService } from '../services/translate.service';
 import { SlQuestionnaireService } from '../sl-questionnaire.service';
 
 @Component({
   selector: 'sl-date-input',
   templateUrl: './date-input.component.html',
-  styleUrls: ['./date-input.component.css'],
+  styleUrls: ['./date-input.component.scss'],
 })
 export class DateInputComponent implements OnInit {
   date: any;
@@ -17,9 +18,13 @@ export class DateInputComponent implements OnInit {
   @Input() question: Question;
   @Input() autoCaptureText: String;
 
-  constructor(private qService: SlQuestionnaireService) {}
+  constructor(
+    private qService: SlQuestionnaireService,
+    private translate: SlTranslateService
+  ) {}
 
   ngOnInit() {
+    this.autoCaptureText = this.translate['frmelmnts'].btn?.autoCapture;
     setTimeout(() => {
       this.questionnaireForm.addControl(
         this.question._id,

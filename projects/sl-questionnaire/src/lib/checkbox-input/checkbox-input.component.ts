@@ -1,24 +1,29 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Question } from '../interfaces/questionnaire.type';
+import { SlTranslateService } from '../services/translate.service';
 import { SlQuestionnaireService } from '../sl-questionnaire.service';
 
 @Component({
   selector: 'sl-checkbox-input',
   templateUrl: './checkbox-input.component.html',
-  styleUrls: ['./checkbox-input.component.css'],
+  styleUrls: ['./checkbox-input.component.scss'],
 })
 export class CheckboxInputComponent implements OnInit {
   @Input() options;
   @Input() questionnaireForm: FormGroup;
   @Input() question: Question;
-  @Input() hintCloseText: string;
+  hintCloseText: string;
   @Output() dependentParent = new EventEmitter<Question>();
   isDimmed: any;
   hint: any;
-  constructor(public qService: SlQuestionnaireService) {}
+  constructor(
+    public qService: SlQuestionnaireService,
+    public translate: SlTranslateService
+  ) {}
 
   ngOnInit() {
+    this.hintCloseText = this.translate['frmelmnts'].btn?.close;
     setTimeout(() => {
       const optionControl = this.options.map((v) => {
         if (
