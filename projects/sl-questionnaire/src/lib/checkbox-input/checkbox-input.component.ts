@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Question } from '../interfaces/questionnaire.type';
 import { SlTranslateService } from '../services/translate.service';
-import { SlQuestionnaireService } from '../sl-questionnaire.service';
+import { SlQuestionnaireService } from '../services/sl-questionnaire.service';
 
 @Component({
   selector: 'sl-checkbox-input',

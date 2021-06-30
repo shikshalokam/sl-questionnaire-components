@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Question } from '../interfaces/questionnaire.type';
 import { SlTranslateService } from '../services/translate.service';
-import { SlQuestionnaireService } from '../sl-questionnaire.service';
+import { SlQuestionnaireService } from '../services/sl-questionnaire.service';
 
 @Component({
   selector: 'sl-number-input',
@@ -20,7 +20,7 @@ export class NumberInputComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.placeholder = this.translate['frmelmnts']?.btn?.enterResponse;
+    this.placeholder = this.translate['frmelmnts']?.lbl?.enterResponse;
     setTimeout(() => {
       this.questionnaireForm.addControl(
         this.question._id,

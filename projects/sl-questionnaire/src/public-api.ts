@@ -2,7 +2,6 @@
  * Public API Surface of sl-questionnaire
  */
 
-export * from './lib/sl-questionnaire.service';
 export * from './lib/sl-questionnaire.module';
 
 export * from './lib/text-input/text-input.component';
@@ -22,3 +21,5 @@ export * from './lib/interfaces/alert.type';
 
 export * from './lib/services/translate.service';
 export * from './lib/services/utils.service';
+export * from './lib/services/sl-questionnaire.service';
+

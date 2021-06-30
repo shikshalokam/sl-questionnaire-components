@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Question } from '../interfaces/questionnaire.type';
-import { SlQuestionnaireService } from '../sl-questionnaire.service';
+import { SlQuestionnaireService } from '../services/sl-questionnaire.service';
 
 @Component({
   selector: 'sl-range-input',

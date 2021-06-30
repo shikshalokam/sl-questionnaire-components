@@ -93,14 +93,16 @@
           [isClickable]="true"
           *ngIf="dimmerIndex == qi && question?.hint"
         >
-          <h4 class="ui inverted header">{{ question?.hint }}</h4>
-          <button
-            type="button"
-            class="sb-btn sb-btn-sm sb-btn-white text-uppercase flex-basis-1"
-            type="submit"
-          >
-            {{ dimmerCloseText }}
-          </button>
+          <div class="center">
+            <h4 class="ui inverted header">{{ question?.hint }}</h4>
+            <button
+              type="button"
+              class="sb-btn sb-btn-sm sb-btn-white text-uppercase flex-basis-1"
+              type="submit"
+            >
+              {{ dimmerCloseText }}
+            </button>
+          </div>
         </sui-dimmer>
       </div>
     </div>
