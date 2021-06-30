@@ -1,21 +1,26 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Question } from '../interfaces/questionnaire.type';
-import { SlQuestionnaireService } from '../sl-questionnaire.service';
+import { SlTranslateService } from '../services/translate.service';
+import { SlQuestionnaireService } from '../services/sl-questionnaire.service';
 
 @Component({
   selector: 'sl-number-input',
   templateUrl: './number-input.component.html',
-  styleUrls: ['./number-input.component.css'],
+  styleUrls: ['./number-input.component.scss'],
 })
 export class NumberInputComponent implements OnInit {
-  @Input() placeholder;
+  placeholder;
   response: string;
   @Input() questionnaireForm: FormGroup;
   @Input() question: Question;
-  constructor(private qService: SlQuestionnaireService) {}
+  constructor(
+    private qService: SlQuestionnaireService,
+    private translate: SlTranslateService
+  ) {}
 
   ngOnInit() {
+    this.placeholder = this.translate['frmelmnts']?.lbl?.enterResponse;
     setTimeout(() => {
       this.questionnaireForm.addControl(
         this.question._id,

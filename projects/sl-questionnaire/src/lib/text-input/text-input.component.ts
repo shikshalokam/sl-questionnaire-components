@@ -1,23 +1,27 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { SlQuestionnaireService } from '../sl-questionnaire.service';
+import { Question } from '../interfaces/questionnaire.type';
+import { SlTranslateService } from '../services/translate.service';
+import { SlQuestionnaireService } from '../services/sl-questionnaire.service';
 
 @Component({
   selector: 'sl-text-input',
   templateUrl: './text-input.component.html',
-  styleUrls: ['./text-input.component.css'],
+  styleUrls: ['./text-input.component.scss'],
 })
 export class TextInputComponent implements OnInit {
   text: string;
   @Input() questionnaireForm: FormGroup;
-  // @Input() question: Question
-  @Input() question;
-  @Input() placeholder: string;
-  
+  @Input() question : Question;
+  placeholder;
 
-  constructor(private qService:SlQuestionnaireService) {}
+  constructor(
+    private qService: SlQuestionnaireService,
+    private translate: SlTranslateService
+  ) {}
 
   ngOnInit() {
+    this.placeholder = this.translate['frmelmnts'].lbl.enterResponse;
     setTimeout(() => {
       this.questionnaireForm.addControl(
         this.question._id,
