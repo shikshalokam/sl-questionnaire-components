@@ -1,11 +1,6 @@
 {
   "name": "sl-questionnaire",
   "version": "0.0.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/shikshalokam/sl-questionnaire-components",
-    "main":"./dist/sl-questionnaire/bundles"
-  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
