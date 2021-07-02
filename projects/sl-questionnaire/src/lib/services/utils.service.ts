@@ -1,12 +1,25 @@
 import { Injectable } from '@angular/core';
 import { SuiModalService } from 'ng2-semantic-ui-v9';
+import { Observable } from 'rxjs';
 import { AlertMeta } from '../interfaces/alert.type';
+
+export abstract class SlUtilsAbstract {
+  abstract openAlert?(data): Promise<any>;
+
+  abstract error?(msg);
+
+  abstract getPreSingedUrls?(payload): Observable<any>;
+
+  abstract cloudStorageUpload?(payload): Observable<any>;
+}
 
 @Injectable({
   providedIn: 'root',
 })
-export abstract class SlUtilsService {
-  constructor(public modalService: SuiModalService) {}
+export abstract class SlUtilsService extends SlUtilsAbstract {
+  constructor(public modalService: SuiModalService) {
+    super();
+  }
 
   /**
    * @param {AlertMeta}  meta: Alert Meta Form Object
@@ -54,12 +67,4 @@ export abstract class SlUtilsService {
 
     return this.openAlert(alertMeta);
   }
-
-  abstract openAlert(data): Promise<any>;
-
-  abstract error(msg);
-
-  abstract getPreSingedUrls(payload);
-
-  abstract cloudStorageUpload(payload);
 }

@@ -25,7 +25,7 @@ export interface IContext {
 @Component({
   selector: 'sl-matrix-questions',
   templateUrl: './matrix-questions.component.html',
-  styleUrls: ['./matrix-questions.component.css'],
+  styleUrls: ['./matrix-questions.component.scss'],
 })
 export class MatrixQuestionsComponent implements OnInit {
   addText: string;
@@ -141,7 +141,7 @@ export class MatrixQuestionsComponent implements OnInit {
     // metaData.footer.className = 'double-btn';
     // const accepted = await this.observationUtilService.showPopupAlert(metaData);
     const alertMeta: AlertMeta = {
-      title: this.translate['frmelmnts'].alert.uploadTermsRejected,
+      title: this.translate['frmelmnts'].btn.delete,
       size: 'mini',
       bodyType: 'text',
       data: this.translate['frmelmnts'].lbl.deleteSubmission,
@@ -149,7 +149,7 @@ export class MatrixQuestionsComponent implements OnInit {
       acceptText: this.translate['frmelmnts'].btn.yes,
       cancelText: this.translate['frmelmnts'].btn.no,
     };
-    const accepted = this.utils.alert(alertMeta);
+    const accepted = await this.utils.alert(alertMeta);
     if (!accepted) {
       return;
     }

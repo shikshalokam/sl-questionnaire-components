@@ -4,7 +4,8 @@
   "lib": {
     "entryFile": "src/public-api.ts",
     "umdModuleIds": {
-      "ng2-semantic-ui-v9": "ng2SemanticUiV9"
+      "ng2-semantic-ui-v9": "ng2SemanticUiV9",
+      "lodash-es":"lodashEs"
     }
   }
 }

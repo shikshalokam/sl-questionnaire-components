@@ -12,3 +12,7 @@
 .ui.cards > .card > .content:after {
   content: none;
 }
+
+.modals.dimmer .ui.scrolling.modal {
+  position: fixed !important;
+}
