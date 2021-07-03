@@ -1,6 +1,6 @@
 {
   "name": "sl-questionnaire",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -19,7 +19,6 @@
     "@angular/platform-browser": "~9.1.13",
     "@angular/platform-browser-dynamic": "~9.1.13",
     "@angular/router": "~9.1.13",
-    "@project-sunbird/sb-styles": "0.0.9",
     "lodash-es": "^4.17.21",
     "ng2-semantic-ui-v9": "0.0.1",
     "rxjs": "~6.5.4",
