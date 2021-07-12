@@ -19,27 +19,28 @@
       (click)="$event.stopPropagation(); deleteAttachment(i)"
       >&#215;</a
     >
-    <div *ngIf="extension(item.name) == 'png'" class="mx-10">
+    <div [ngSwitch]="extension(item.name)">
+    <div *ngSwitchCase = "'png'" class="mx-10">
       <i class="file image outline icon"></i>
     </div>
-    <div *ngIf="extension(item.name) == 'jpg'" class="mx-10">
+    <div *ngSwitchCase = "'jpg'" class="mx-10">
       <i class="file image outline icon"></i>
     </div>
-    <div *ngIf="extension(item.name) == 'jpeg'" class="mx-10">
+    <div *ngSwitchCase = "'jpeg'" class="mx-10">
       <i class="file image outline icon"></i>
     </div>
-    <div *ngIf="extension(item.name) == 'pdf'" class="mx-10">
+    <div *ngSwitchCase = "'pdf'" class="mx-10">
       <i class="file pdf outline icon"></i>
     </div>
-    <div *ngIf="extension(item.name) == 'mp4'" class="mx-10">
+    <div *ngSwitchCase = "'mp4'" class="mx-10">
       <i class="file video outline icon"></i>
     </div>
-    <div *ngIf="extension(item.name) == 'mp3'" class="mx-10">
+    <div *ngSwitchCase = "'mp3'" class="mx-10">
       <i class="file audio outline icon"></i>
     </div>
-    <div *ngIf="extension(item.name) != ('mp3' || 'mp4' || 'png' || 'jpg' || 'jpeg' ||'pdf')" class="mx-10">
+    <div *ngSwitchDefault class="mx-10">
       <i class="file alternate outline icon"></i>
     </div>
-   
+  </div>
   </div>
 </div>
