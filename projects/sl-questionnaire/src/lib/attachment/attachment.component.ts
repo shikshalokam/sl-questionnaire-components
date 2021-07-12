@@ -33,7 +33,7 @@ export class AttachmentComponent implements OnInit {
     const alertMeta: AlertMeta = {
       size: 'tiny',
       bodyType: 'text',
-      data: this.translate['frmelmnts'].alert.fileLimitCross20,
+      data: this.translate['frmelmnts'].lbl.fileLimitCross20,
       buttonClass: 'single-btn',
       acceptText: this.translate['frmelmnts'].btn.ok,
       cancelText: null,
@@ -75,7 +75,7 @@ export class AttachmentComponent implements OnInit {
               const alertMeta: AlertMeta = {
                 size: 'tiny',
                 bodyType: 'text',
-                data: this.translate['frmelmnts'].alert.evidenceUploaded,
+                data: this.translate['frmelmnts'].lbl.evidenceUploaded,
                 buttonClass: 'single-btn',
                 acceptText: this.translate['frmelmnts'].btn.ok,
                 cancelText: null,
@@ -112,7 +112,7 @@ export class AttachmentComponent implements OnInit {
     const alertMeta: AlertMeta = {
       size: 'mini',
       bodyType: 'text',
-      data: this.translate['frmelmnts'].alert.confirmEvidenceDelete,
+      data: this.translate['frmelmnts'].lbl.confirmEvidenceDelete,
       buttonClass: 'double-btn',
       acceptText: this.translate['frmelmnts'].btn.ok,
       cancelText: this.translate['frmelmnts'].btn.no,
@@ -127,7 +127,7 @@ export class AttachmentComponent implements OnInit {
 
   async onAddApproval(file) {
     let html = `
-    ${this.translate['frmelmnts'].alert.evidence_content_policy}<a href='/term-of-use.html' target="_blank">${this.translate['frmelmnts'].alert.evidence_content_policy_label}</a> .${this.translate['frmelmnts'].alert.uploadevidencecontent}
+    ${this.translate['frmelmnts'].lbl.evidence_content_policy}<a href='/term-of-use.html' target="_blank">${this.translate['frmelmnts'].lbl.evidence_content_policy_label}</a> .${this.translate['frmelmnts'].lbl.uploadevidencecontent}
     `;
     const alertMeta: AlertMeta = {
       size: 'tiny',
@@ -138,18 +138,20 @@ export class AttachmentComponent implements OnInit {
       cancelText: this.translate['frmelmnts'].btn.donotupload,
     };
     let returnData = await this.utils.alert(alertMeta);
-    if (!returnData) {
+    if (returnData == false) {
       this.notAccepted();
       return;
     }
-    file.click();
+    if (returnData == true) {
+      file.click();
+    }
   }
 
   notAccepted(): void {
     const alertMeta: AlertMeta = {
       size: 'tiny',
       bodyType: 'text',
-      data: this.translate['frmelmnts'].alert.uploadTermsRejected,
+      data: this.translate['frmelmnts'].lbl.uploadTermsRejected,
       buttonClass: 'single-btn',
       acceptText: this.translate['frmelmnts'].btn.ok,
       cancelText: null,
