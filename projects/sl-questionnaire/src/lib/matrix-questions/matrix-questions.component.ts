@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, Input, OnInit, ViewChild } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
@@ -28,6 +28,10 @@ export interface IContext {
   styleUrls: ['./matrix-questions.component.scss'],
 })
 export class MatrixQuestionsComponent implements OnInit {
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event) {
+    this.showBadgeAssingModel = false;
+  }
   addText: string;
   submitText: string;
   cancelText: string;
