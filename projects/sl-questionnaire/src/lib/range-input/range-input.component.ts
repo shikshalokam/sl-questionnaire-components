@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Question } from '../interfaces/questionnaire.type';
+import { Options } from '@angular-slider/ngx-slider';
+import { Question, Validation } from '../interfaces/questionnaire.type';
 import { SlQuestionnaireService } from '../services/sl-questionnaire.service';
 
 @Component({
@@ -11,6 +12,11 @@ import { SlQuestionnaireService } from '../services/sl-questionnaire.service';
 export class RangeInputComponent implements OnInit {
   @Input() questionnaireForm: FormGroup;
   @Input() question: Question;
+  public options:Options={
+    step:1,
+    hidePointerLabels:true,
+    hideLimitLabels:true
+  };
   constructor(public qService: SlQuestionnaireService) {}
 
   ngOnInit() {
@@ -25,10 +31,22 @@ export class RangeInputComponent implements OnInit {
         ? this.question.startTime
         : Date.now();
     });
+    this.max && (this.options['ceil'] = +this.max)
+    this.min && (this.options['floor'] = +this.min)
+
+    setTimeout(()=>{
+      if(this.question.value){
+        this.questionnaireForm.controls[this.question._id].reset(this.question.value);
+      }else{
+        if(((this.question.validation) as Validation).required){
+            this.questionnaireForm.controls[this.question._id].reset(null);
+        }
+      }
+    },100);
   }
 
-  onChange(e: Event) {
-    let value = (e.target as HTMLInputElement).value;
+  onChange(e) {
+    let value = e.value;
     this.question.value = value;
     this.question.endTime = Date.now();
   }

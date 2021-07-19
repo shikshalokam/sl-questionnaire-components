@@ -13,6 +13,7 @@ import { AttachmentComponent } from './attachment/attachment.component';
 import { InputComponent } from './input/input.component';
 import { PageQuestionsComponent } from './page-questions/page-questions.component';
 import { MatrixQuestionsComponent } from './matrix-questions/matrix-questions.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [
@@ -26,9 +27,9 @@ import { MatrixQuestionsComponent } from './matrix-questions/matrix-questions.co
     AttachmentComponent,
     InputComponent,
     PageQuestionsComponent,
-    MatrixQuestionsComponent,
+    MatrixQuestionsComponent
   ],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, SuiModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, SuiModule,NgxSliderModule],
   exports: [
     TextInputComponent,
     DateInputComponent,
@@ -40,7 +41,7 @@ import { MatrixQuestionsComponent } from './matrix-questions/matrix-questions.co
     AttachmentComponent,
     InputComponent,
     PageQuestionsComponent,
-    MatrixQuestionsComponent,
+    MatrixQuestionsComponent
   ],
 })
 export class SlQuestionnaireModule {}

@@ -24,6 +24,7 @@
     "@angular/core": "^9.1.13"
   },
   "dependencies": {
-    "tslib": "^1.10.0"
+    "tslib": "^1.10.0",
+    "@angular-slider/ngx-slider": "^2.0.3"
   }
 }
