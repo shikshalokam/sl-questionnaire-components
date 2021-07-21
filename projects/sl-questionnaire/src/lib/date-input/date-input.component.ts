@@ -47,9 +47,19 @@ export class DateInputComponent implements OnInit {
   }
 
   onChange(e: string) {
-    let value = e;
+    let value:any = this.dateTimeFormat(e);
     this.question.value = value;
     this.question.endTime = Date.now();
+  }
+
+  dateTimeFormat(e:any) {
+    let x = new Date(e);
+    let n = new Date();
+    let h = n.getHours();
+    let m = n.getMinutes();
+    x.setHours(h);
+    x.setMinutes(m);
+    return x;
   }
 
   autoCapture() {
