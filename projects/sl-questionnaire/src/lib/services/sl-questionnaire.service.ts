@@ -226,6 +226,12 @@ export class SlQuestionnaireService {
     } else {
       value = currentQuestion.value;
       labels = formValues[currentQuestion._id];
+      if (currentQuestion.responseType == 'radio' && currentQuestion.value) {
+        labels = currentQuestion.options.find(_ => _.value == currentQuestion.value).label
+      } 
+      if (currentQuestion.responseType == 'multiselect' && currentQuestion.value) {
+        labels = currentQuestion.options.filter(_=>currentQuestion.value.includes(_.value)).map(_=>_.label)
+      }
     }
 
     return {
