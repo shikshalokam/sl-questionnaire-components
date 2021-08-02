@@ -98,6 +98,9 @@ export class SlQuestionnaireService {
                 questions.fileName = validSubmission.answers[questions._id]
                   ? validSubmission.answers[questions._id].fileName
                   : [];
+                questions.endTime = validSubmission.answers[questions._id]
+                  ? validSubmission.answers[questions._id].endTime
+                  : '';
               }
             } else if (
               validSubmission.answers &&
@@ -117,6 +120,9 @@ export class SlQuestionnaireService {
               question.fileName = validSubmission.answers[question._id]
                 ? validSubmission.answers[question._id].fileName
                 : [];
+              question.endTime = validSubmission.answers[question._id]
+                ? validSubmission.answers[question._id].endTime
+                : ''
             }
           }
         }
@@ -159,6 +165,10 @@ export class SlQuestionnaireService {
               validSubmission.answers[matrixQuestion._id].value[index][
                 question._id
               ].fileName;
+            question.endTime =
+              validSubmission.answers[matrixQuestion._id].value[index][
+                question._id
+              ].endTime;
           }
         });
       });
