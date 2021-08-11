@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { AlertMeta } from '../interfaces/alert.type';
 import { SlTranslateService } from '../services/translate.service';
 import { SlUtilsService } from '../services/utils.service';
@@ -18,7 +18,8 @@ export class AttachmentComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  basicUpload(files: File[]) {
+  basicUpload(event) {
+    const files: FileList = event.target.files;
     let sizeMB = +(files[0].size / 1000 / 1000).toFixed(4);
     if (sizeMB > 20) {
       this.fileLimitCross();
@@ -26,6 +27,7 @@ export class AttachmentComponent implements OnInit {
     }
     this.formData = new FormData();
     Array.from(files).forEach((f) => this.formData.append('file', f));
+    event.target.value = null;
     this.preSignedUrl(this.getFileNames(this.formData));
   }
 
