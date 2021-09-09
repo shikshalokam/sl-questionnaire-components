@@ -17,7 +17,6 @@
     ],
     "paths": {
       "sl-questionnaire": [
-        "dist/sl-questionnaire/sl-questionnaire",
         "dist/sl-questionnaire"
       ]
     }

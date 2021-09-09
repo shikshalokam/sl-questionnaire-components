@@ -1,15 +1,15 @@
 {
   "name": "@shikshalokam/sl-questionnaire",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "author": "Rejneesh",
-  "private":false,
+  "private": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/shikshalokam/sl-questionnaire-components.git"
   },
   "description": "Library to integrate questionnaire in SL Projects",
   "bugs": {
-    "url":"https://github.com/shikshalokam/sl-questionnaire-components/issues"
+    "url": "https://github.com/shikshalokam/sl-questionnaire-components/issues"
   },
   "homepage": "https://github.com/shikshalokam/sl-questionnaire-components",
   "license": "MIT",

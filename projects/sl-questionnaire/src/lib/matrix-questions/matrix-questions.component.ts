@@ -42,6 +42,7 @@ export class MatrixQuestionsComponent implements OnInit {
   public modalTemplate: ModalTemplate<IContext, string, string>;
   context: IContext;
   showBadgeAssingModel: boolean;
+  instanceLastUpdated:any[]=[]
   constructor(
     private translate: SlTranslateService,
     public modalService: SuiModalService,
@@ -63,27 +64,41 @@ export class MatrixQuestionsComponent implements OnInit {
     });
   }
   initializeMatrix() {
-    let valid = true;
+    // let valid = true;
     if (this.question.value.length) {
       this.question.value.map((v) => {
         let obj = {};
+        let endTime = []
         v.forEach((ques) => {
+          endTime.push(ques.endTime)
           if (!ques.value) return;
           obj[ques._id] = ques.value;
         });
         (this.questionnaireForm.controls[this.question._id] as FormArray).push(
-          new FormControl(obj)
+          new FormControl(obj,[this.instanceValidation])
         );
-        if (_.isEmpty(obj)) {
-          valid = false;
-        }
+       let instanceupdatedAt= endTime.reduce(function (x, y) {
+          return x > y ? x : y;
+       });
+        this.instanceLastUpdated.push(instanceupdatedAt)
+        // if (_.isEmpty(obj)) {
+        //   valid = false;
+        // }
       });
     }
 
-    if (!valid)
-      this.questionnaireForm.controls[this.question._id].setErrors({
-        err: 'Matrix reposne not valid',
-      });
+    // if (!valid)
+    //   this.questionnaireForm.controls[this.question._id].setErrors({
+    //     err: 'Matrix reposne not valid',
+    //   });
+  }
+
+  instanceValidation(control: FormControl) {
+  let value = control.value;
+    if (_.isEmpty(value)) {
+    return { err: 'Instance not filled' }
+  }
+    return null;
   }
 
   addInstances(): void {
@@ -104,8 +119,9 @@ export class MatrixQuestionsComponent implements OnInit {
       this.modalTemplate
     );
     config.closeResult = 'closed!';
+    let deepClonedQuestion = _.cloneDeep(this.question.value[i]);
     config.context = {
-      questions: this.question.value[i],
+      questions: deepClonedQuestion,
       heading: `${this.question.instanceIdentifier} ${i + 1}`,
       index: i,
     };
@@ -119,10 +135,12 @@ export class MatrixQuestionsComponent implements OnInit {
 
   matrixSubmit(index) {
     this.showBadgeAssingModel = false;
+    this.question.value[index] = this.context.questions;
     this.formAsArray.at(index).patchValue(this.matrixForm.value);
     if (this.matrixForm.invalid) {
       this.formAsArray.at(index).setErrors({ err: 'Matrix reposne not valid' });
     }
+    this.instanceLastUpdated[index]=Date.now()
   }
 
   async deleteInstanceAlert(index) {
@@ -162,5 +180,6 @@ export class MatrixQuestionsComponent implements OnInit {
     (this.questionnaireForm.controls[this.question._id] as FormArray).removeAt(
       index
     );
+    this.instanceLastUpdated.splice(index,1)
   }
 }

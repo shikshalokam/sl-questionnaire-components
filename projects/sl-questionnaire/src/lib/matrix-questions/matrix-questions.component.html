@@ -9,12 +9,17 @@
   *ngFor="let instance of question?.value; let i = index"
 >
   <div class="content flex-jc-space-between">
-    <div (click)="viewInstance(i)" style="flex: 1">
+    <div
+      (click)="viewInstance(i)"
+      style="flex: 1"
+      class="d-flex flex-dc px-10"
+      [ngClass]="{
+        'valid-response':
+         formAsArray?.controls[i].valid
+      }"
+    >
       <span> {{ question?.instanceIdentifier }} {{ i + 1 }}</span>
-      <!-- <span class="modified" *ngIf="getLastModified(instance)"
-      >Last Modified {{ "todo" }}</span
-    > -->
-      <!-- todo -->
+      <span class="fs-0-785 modified" *ngIf="instanceLastUpdated[i]">Last Updated On : {{instanceLastUpdated[i] |date:'short'}}</span> 
     </div>
     <div>
       <i class="trash large icon" (click)="deleteInstanceAlert(i)"></i>
