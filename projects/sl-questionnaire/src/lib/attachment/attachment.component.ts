@@ -116,7 +116,7 @@ export class AttachmentComponent implements OnInit {
       bodyType: 'text',
       data: this.translate['frmelmnts'].lbl.confirmEvidenceDelete,
       buttonClass: 'double-btn',
-      acceptText: this.translate['frmelmnts'].btn.ok,
+      acceptText: this.translate['frmelmnts'].btn.yes,
       cancelText: this.translate['frmelmnts'].btn.no,
     };
     const accepted = await this.utils.alert(alertMeta);
