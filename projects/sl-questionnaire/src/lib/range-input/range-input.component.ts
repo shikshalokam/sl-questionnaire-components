@@ -15,7 +15,8 @@ export class RangeInputComponent implements OnInit {
   public options:Options={
     step:1,
     hidePointerLabels:true,
-    hideLimitLabels:true
+    hideLimitLabels:true,
+    showSelectionBar:true
   };
   constructor(public qService: SlQuestionnaireService) {}
 
@@ -23,13 +24,14 @@ export class RangeInputComponent implements OnInit {
     setTimeout(() => {
       this.questionnaireForm.addControl(
         this.question._id,
-        new FormControl(this.question.value || null, [
+        new FormControl(this.question.value || +this.min, [
           this.qService.validate(this.question),
         ])
       );
       this.question.startTime = this.question.startTime
         ? this.question.startTime
         : Date.now();
+      this.question.value = this.question.value ? this.question.value : this.min;
     });
     this.max && (this.options['ceil'] = +this.max)
     this.min && (this.options['floor'] = +this.min)
@@ -46,6 +48,7 @@ export class RangeInputComponent implements OnInit {
   }
 
   onChange(e) {
+    console.log(e);
     let value = e.value;
     this.question.value = value;
     this.question.endTime = Date.now();
