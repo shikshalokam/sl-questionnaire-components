@@ -48,7 +48,6 @@ export class RangeInputComponent implements OnInit {
   }
 
   onChange(e) {
-    console.log(e);
     let value = e.value;
     this.question.value = value;
     this.question.endTime = Date.now();
