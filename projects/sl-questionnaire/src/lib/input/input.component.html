@@ -15,8 +15,8 @@
             'valid-response': questionnaireForm?.controls[question._id]?.valid
           }"
         >
-          <div class="sb-h5">
-            {{ qai == 0 ? qi + 1 + ")" : "" }}&nbsp;{{ q }}
+          <div class="sb-h5" *ngIf="q!=''">
+            {{ question.questionNumber + " .  "}}&nbsp;{{ q }}
           </div>
         </div>
         <div *ngIf="question?.hint">
