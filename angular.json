@@ -47,7 +47,7 @@
   "defaultProject": "sl-questionnaire",
   "schematics": {
     "@schematics/angular:component": {
-      "styleext": "scss"
+      "style": "scss"
     }
   }
 }
