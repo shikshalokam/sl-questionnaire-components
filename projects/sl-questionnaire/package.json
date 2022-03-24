@@ -20,11 +20,11 @@
     "observation"
   ],
   "peerDependencies": {
-    "@angular/common": "^9.1.13",
-    "@angular/core": "^9.1.13"
+    "@angular/common": "^10.2.5",
+    "@angular/core": "^10.2.5"
   },
   "dependencies": {
-    "tslib": "^1.10.0",
-    "@angular-slider/ngx-slider": "^2.0.3"
+    "@angular-slider/ngx-slider": "^2.0.3",
+    "tslib": "^2.0.0"
   }
 }
