@@ -60,3 +60,15 @@
 // .valid-response {
 //   color: var(--green);
 // }
+.section-header-style{
+    font-size:large;
+    font-weight: bold;
+    color: green !important;
+}
+.help {
+    font-size: 30px;
+    z-index: 557;
+    margin-right: 15px;
+    position: absolute;
+    color: grey;
+  }
