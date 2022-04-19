@@ -1,4 +1,7 @@
 <div *ngFor="let question of questions; let qi = index">
+  <div *ngIf="question?.sectionHeader">
+    <h4 class="section-header-style">{{question?.sectionHeader}}</h4>
+  </div>
   <div
     [ngClass]="{
       'ui card question-card sb--card relative9':

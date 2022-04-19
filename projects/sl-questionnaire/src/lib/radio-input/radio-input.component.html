@@ -18,11 +18,11 @@
       [formControlName]="question._id"
     />
     <label>{{ o.label }}</label>
-    <div *ngIf="question?.option && question?.option[optionIndex]?.hint">
+    <div *ngIf="options && options[optionIndex]?.hint">
       <i
         class="icon large lightbulb"
         (click)="
-          isDimmed = !isDimmed; hint = question?.option[optionIndex]?.hint
+          isDimmed = !isDimmed; hint = options[optionIndex]?.hint
         "
       ></i>
     </div>
