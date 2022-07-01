@@ -72,3 +72,21 @@
     position: absolute;
     color: grey;
   } 
+
+::ng-deep{
+    .customModal{
+        .close{
+            display: none !important;
+        }
+        i.icon{
+            font-size: 1.25rem !important;
+        }
+        .sb-modal-content{
+            padding: 1rem 3.2rem !important;
+        }
+        .sb-modal-actions{
+            flex-direction: column !important;
+        }
+    }
+    
+}

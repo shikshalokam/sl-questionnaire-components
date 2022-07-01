@@ -91,7 +91,46 @@
           }"
           *ngIf="question.file"
         ></sl-attachment>
-        <sui-dimmer
+        <sui-modal
+                  [mustScroll]="true"
+                  [isClosable]="true"
+                  [transitionDuration]="0"
+                  [size]="'normal'"
+                  class="sb-modal customModal"
+                  appBodyScroll
+                  *ngIf="isDimmed && dimmerIndex == qi && question?.hint"
+                  #modal
+                >
+                  <!--Header-->
+                  <div class="sb-modal-header d-flex flex-dir-row">
+                    <div>
+                      <i class="info circle icon sb-color-primary"></i>
+                    </div>
+                    <div class="font-weight-bold sb-color-primary">
+                      Note: This is the hint for the following question
+                    </div>
+                  </div>
+                  <!--/Header-->
+                  <!--Content-->
+                  <div class="sb-modal-content">
+                    <h4 class="ui header">{{ question?.hint }}</h4>
+                  </div>
+                  <!--/Content-->
+
+                  <!--Actions-->
+                  <div class="sb-modal-actions">
+                    <button
+                    type="button"
+                    class="sb-btn sb-btn-sm sb-btn-primary"
+                    type="submit"
+                    (click)="isDimmed = false"
+                  >
+                  {{ dimmerCloseText }}
+                  </button>
+                  </div>
+                  <!--/Actions-->
+        </sui-modal>
+        <!-- <sui-dimmer
           [(isDimmed)]="isDimmed"
           [isClickable]="true"
           *ngIf="dimmerIndex == qi && question?.hint"
@@ -106,7 +145,7 @@
               {{ dimmerCloseText }}
             </button>
           </div>
-        </sui-dimmer>
+        </sui-dimmer> -->
       </div>
     </div>
   </div>
