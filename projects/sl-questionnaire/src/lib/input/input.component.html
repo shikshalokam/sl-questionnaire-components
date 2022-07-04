@@ -91,22 +91,7 @@
           }"
           *ngIf="question.file"
         ></sl-attachment>
-        <sui-dimmer
-          [(isDimmed)]="isDimmed"
-          [isClickable]="true"
-          *ngIf="dimmerIndex == qi && question?.hint"
-        >
-          <div class="center">
-            <h4 class="ui inverted header">{{ question?.hint }}</h4>
-            <button
-              type="button"
-              class="sb-btn sb-btn-sm sb-btn-white text-uppercase flex-basis-1"
-              type="submit"
-            >
-              {{ dimmerCloseText }}
-            </button>
-          </div>
-        </sui-dimmer>
+        <sl-alert-modal *ngIf="isDimmed && dimmerIndex == qi && question?.hint"[isDimmed]="isDimmed" [hint]="question?.hint"></sl-alert-modal>
       </div>
     </div>
   </div>

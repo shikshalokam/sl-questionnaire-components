@@ -14,6 +14,7 @@ import { InputComponent } from './input/input.component';
 import { PageQuestionsComponent } from './page-questions/page-questions.component';
 import { MatrixQuestionsComponent } from './matrix-questions/matrix-questions.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { AlertModalComponent } from './shared/alert-modal/alert-modal.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     AttachmentComponent,
     InputComponent,
     PageQuestionsComponent,
-    MatrixQuestionsComponent
+    MatrixQuestionsComponent,
+    AlertModalComponent
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, SuiModule,NgxSliderModule],
   exports: [

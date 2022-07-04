@@ -10,13 +10,16 @@ import { SlUtilsService } from '../services/utils.service';
 })
 export class AttachmentComponent implements OnInit {
   @Input() data;
+  files:string;
   formData;
   constructor(
     private translate: SlTranslateService,
     private utils: SlUtilsService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(){
+    this.files = this.translate['frmelmnts'].lbl?.files;
+  }
 
   basicUpload(event) {
     const files: FileList = event.target.files;
