@@ -14,6 +14,7 @@ export class CheckboxInputComponent implements OnInit {
   @Input() questionnaireForm: FormGroup;
   @Input() question: Question;
   hintCloseText: string;
+  hintModalNote:string
   @Output() dependentParent = new EventEmitter<Question>();
   isDimmed: any;
   hint: any;
@@ -24,6 +25,7 @@ export class CheckboxInputComponent implements OnInit {
 
   ngOnInit() {
     this.hintCloseText = this.translate['frmelmnts'].btn?.close;
+    this.hintModalNote = this.translate['frmelmnts'].lbl?.hintModalNote;
     setTimeout(() => {
       const optionControl = this.options.map((v) => {
         if (

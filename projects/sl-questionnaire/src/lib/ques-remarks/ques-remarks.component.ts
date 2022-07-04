@@ -19,7 +19,7 @@ export class QuesRemarksComponent implements OnInit {
 
   ngOnInit() {
     this.title = this.translate['frmelmnts'].lbl?.remark_title;
-    this.remarksAddText = this.translate['frmelmnts'].btn.add;
+    this.remarksAddText = this.translate['frmelmnts'].btn.addRemarks;
     this.remark = this.question.remarks;
     this.remark ? (this.showRemarks = true) : false;
   }
