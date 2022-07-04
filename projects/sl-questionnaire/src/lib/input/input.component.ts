@@ -15,8 +15,6 @@ export class InputComponent {
   selectedIndex: number;
   dimmerIndex;
   isDimmed;
-  dimmerCloseText = this.translate['frmelmnts'].btn.close;
-  hintModalNote = this.translate['frmelmnts'].lbl?.hintModalNote;
 
   constructor(private translate: SlTranslateService,public qService:SlQuestionnaireService) {}
 
