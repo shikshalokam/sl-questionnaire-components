@@ -16,6 +16,7 @@ export class RadioInputComponent implements OnInit {
   @Input() questionnaireForm: FormGroup;
   @Input() question: Question;
   hintCloseText: string;
+  hintModalNote:string;
   @Output() dependentParent = new EventEmitter<Question>();
   isDimmed: any;
   hint: any;
@@ -27,6 +28,7 @@ export class RadioInputComponent implements OnInit {
 
   ngOnInit() {
     this.hintCloseText = this.translate['frmelmnts'].btn?.close;
+    this.hintModalNote = this.translate['frmelmnts'].lbl?.hintModalNote;
     setTimeout(() => {
       this.questionnaireForm.addControl(
         this.question._id,
