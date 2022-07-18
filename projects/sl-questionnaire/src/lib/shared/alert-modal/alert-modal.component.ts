@@ -13,14 +13,15 @@ export class AlertModalComponent implements OnInit {
   @Input() hint;
   @Output() closeHintEmitter = new EventEmitter();
   hintCloseText: string;
-  hintModalNote:string
+  hintModalNote:string;
   constructor(
     public translate: SlTranslateService,
     public location:LocationStrategy
   ) {
-    this.location.onPopState(()=>{
+    this.location.onPopState(() => {
       this.isDimmed = false;
-    })
+      this.closeHintEmitter.emit({});
+    });
    }
 
   ngOnInit(){
@@ -29,7 +30,7 @@ export class AlertModalComponent implements OnInit {
   }
 
   closeHint(){
-    this.closeHintEmitter.emit({})
+    this.closeHintEmitter.emit({});
   }
 
 }

@@ -1,7 +1,7 @@
 ::ng-deep{
     .customModal{
         .ui.modal{
-        top: 30% !important;
+            top: 30% !important;
         }
         .close{
             display: none !important;
@@ -10,8 +10,11 @@
             font-size: 1.25rem !important;
         }
         .modalNote{
-            font-size: 1.1rem !important;
+            font-size: 1em !important;
         }
+        .sb-modal-header{
+            font-size: 1rem !important;
+        }    
         .sb-modal-content{
             padding: 1rem 3.2rem !important;
         }
