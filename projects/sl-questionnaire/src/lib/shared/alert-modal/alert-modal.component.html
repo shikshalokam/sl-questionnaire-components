@@ -1,6 +1,6 @@
 <sui-modal
   [mustScroll]="true"
-  [isClosable]="true"
+  [isClosable]="false"
   [transitionDuration]="0"
   [size]="'normal'"
   class="sb-modal customModal"
@@ -30,7 +30,7 @@
       type="button"
       class="sb-btn sb-btn-sm sb-btn-primary"
       type="submit"
-      (click)="isDimmed = false"
+      (click)="closeHint()"
     >
     {{ hintCloseText }}
     </button>
