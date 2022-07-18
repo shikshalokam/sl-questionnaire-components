@@ -65,4 +65,8 @@ export class RadioInputComponent implements OnInit {
       this.dependentParent.emit(this.question);
     }
   }
+
+  closeHint($event){
+    this.isDimmed = false;
+  }
 }

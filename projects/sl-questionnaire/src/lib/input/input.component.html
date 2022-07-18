@@ -91,7 +91,7 @@
           }"
           *ngIf="question.file"
         ></sl-attachment>
-        <sl-alert-modal *ngIf="isDimmed && dimmerIndex == qi && question?.hint"[isDimmed]="isDimmed" [hint]="question?.hint"></sl-alert-modal>
+        <sl-alert-modal *ngIf="isDimmed && dimmerIndex == qi && question?.hint"[isDimmed]="isDimmed" [hint]="question?.hint" (closeHintEmitter)="closeHint($event)"></sl-alert-modal>
       </div>
     </div>
   </div>
