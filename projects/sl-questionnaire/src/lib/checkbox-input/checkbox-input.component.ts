@@ -78,4 +78,8 @@ export class CheckboxInputComponent implements OnInit {
   get isTouched(): boolean {
     return this.questionnaireForm.controls[this.question._id].touched;
   }
+
+  closeHint($event){
+    this.isDimmed = false;
+  }
 }
