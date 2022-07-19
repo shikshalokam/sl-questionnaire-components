@@ -66,7 +66,7 @@ export class RadioInputComponent implements OnInit {
     }
   }
 
-  closeHint($event){
+  closeHint(){
     this.isDimmed = false;
   }
 }
