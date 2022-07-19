@@ -1,14 +1,21 @@
-::ng-deep{
-    .customModal{
-        .ui.modal{
+::ng-deep {
+    .customModal {
+        .ui.modal .ui.header {
+            font-size: 1.3em !important;
+        }
+
+        .ui.modal {
             top: 30% !important;
         }
-        .close{
+
+        .close {
             display: none !important;
         }
-        i.icon{
+
+        i.icon {
             font-size: 1.25rem !important;
         }
+<<<<<<< HEAD
         .modalNote{
             font-size: 1em !important;
         }
@@ -16,11 +23,20 @@
             font-size: 1rem !important;
         }    
         .sb-modal-content{
+=======
+
+        .modalNote {
+            font-size: 1.1rem !important;
+        }
+
+        .sb-modal-content {
+>>>>>>> origin/release-4.5.0
             padding: 1rem 3.2rem !important;
         }
-        .sb-modal-actions{
+
+        .sb-modal-actions {
             flex-direction: column !important;
         }
     }
-    
+
 }
