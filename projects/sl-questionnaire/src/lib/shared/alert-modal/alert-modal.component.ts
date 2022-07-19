@@ -30,12 +30,8 @@ export class AlertModalComponent implements OnInit {
   }
 
   closeHint(){
-<<<<<<< HEAD
-    this.closeHintEmitter.emit({});
-=======
     this.isDimmed = false;
     this.closeHintEmitter.emit()
->>>>>>> origin/release-4.5.0
   }
 
 }
