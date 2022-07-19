@@ -79,7 +79,7 @@ export class CheckboxInputComponent implements OnInit {
     return this.questionnaireForm.controls[this.question._id].touched;
   }
 
-  closeHint($event){
+  closeHint(){
     this.isDimmed = false;
   }
 }

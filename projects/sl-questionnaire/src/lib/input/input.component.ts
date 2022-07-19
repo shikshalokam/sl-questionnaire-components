@@ -109,7 +109,7 @@ export class InputComponent {
     return display;
   }
 
-  closeHint($event){
+  closeHint(){
     this.isDimmed = false;
   }
 }
