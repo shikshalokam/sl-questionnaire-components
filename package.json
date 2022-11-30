@@ -23,7 +23,7 @@
     "ng2-semantic-ui-v9": "0.0.1",
     "rxjs": "~6.5.4",
     "tslib": "^2.0.0",
-    "zone.js": "~0.11.4",
+    "zone.js": "~0.10.2",
     "@angular-slider/ngx-slider": "^2.0.3"
   },
   "devDependencies": {
@@ -36,7 +36,7 @@
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
-    "karma": "~6.4.1",
+    "karma": "~5.1.1",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~4.0.0",
@@ -45,6 +45,6 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.2.4"
+    "typescript": "~4.0.8"
   }
 }
