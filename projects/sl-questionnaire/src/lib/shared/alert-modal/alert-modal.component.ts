@@ -20,6 +20,7 @@ export class AlertModalComponent implements OnInit {
   ) {
     this.location.onPopState(()=>{
       this.isDimmed = false;
+      this.closeHintEmitter.emit({})
     })
    }
 
@@ -29,7 +30,8 @@ export class AlertModalComponent implements OnInit {
   }
 
   closeHint(){
-    this.closeHintEmitter.emit({})
+    this.isDimmed = false;
+    this.closeHintEmitter.emit()
   }
 
 }
