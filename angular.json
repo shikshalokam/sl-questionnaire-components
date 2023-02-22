@@ -32,7 +32,6 @@
       }
     }
   },
-  "defaultProject": "sl-questionnaire",
   "schematics": {
     "@schematics/angular:component": {
       "style": "scss"
