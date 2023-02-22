@@ -2,12 +2,7 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/sl-questionnaire",
   "lib": {
-    "entryFile": "src/public-api.ts",
-    "umdModuleIds": {
-      "ng2-semantic-ui-v9": "ng2SemanticUiV9",
-      "lodash-es":"lodashEs",
-      "@angular-slider/ngx-slider":"ngxSlider"
-    }
+    "entryFile": "src/public-api.ts"
   },
   "whitelistedNonPeerDependencies": [
     "@angular-slider/ngx-slider"

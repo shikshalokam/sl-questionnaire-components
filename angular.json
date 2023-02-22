@@ -28,18 +28,6 @@
             "tsConfig": "projects/sl-questionnaire/tsconfig.spec.json",
             "karmaConfig": "projects/sl-questionnaire/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/sl-questionnaire/tsconfig.lib.json",
-              "projects/sl-questionnaire/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     }

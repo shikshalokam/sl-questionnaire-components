@@ -1,7 +1,7 @@
 {
   "name": "@shikshalokam/sl-questionnaire",
-  "version": "2.1.0",
-  "author": "Rejneesh",
+  "version": "2.3.0",
+  "author": "Amoghavarsh",
   "private": false,
   "repository": {
     "type": "git",
@@ -20,8 +20,8 @@
     "observation"
   ],
   "peerDependencies": {
-    "@angular/common": "~12.2.17",
-    "@angular/core": "~12.2.17"
+    "@angular/common": "~13.3.12",
+    "@angular/core": "~13.3.12"
   },
   "dependencies": {
     "@angular-slider/ngx-slider": "^2.0.3",
