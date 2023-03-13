@@ -67,19 +67,25 @@
           [options]="question.options"
           (dependentParent)="toggleQuestion($event)"
         ></sl-checkbox-input>
-        <sl-page-questions
-          *ngIf="
-            question.responseType == reponseType.PAGEQUESTIONS;
-            pageQuestions
-          "
+        <ng-container *ngIf="question.responseType == reponseType.PAGEQUESTIONS;pageQuestions">
+          <sl-input
+          [questionnaireForm]="questionnaireForm"
+          [questions]="question"
+          ></sl-input>
+        </ng-container>
+        <ng-container  *ngIf="question.responseType == reponseType.MATRIX">
+          <sl-matrix-questions
           [questionnaireForm]="questionnaireForm"
           [question]="question"
-        ></sl-page-questions>
-        <sl-matrix-questions
-          *ngIf="question.responseType == reponseType.MATRIX"
-          [questionnaireForm]="questionnaireForm"
-          [question]="question"
-        ></sl-matrix-questions>
+          #matrixComponent>
+            <ng-template #matrix>
+              <sl-input
+              [questions]="matrixComponent.context?.questions"
+              [questionnaireForm]="matrixComponent.matrixForm"
+              ></sl-input>
+            </ng-template>
+          </sl-matrix-questions>
+        </ng-container>
         <sl-ques-remarks
           [question]="question"
           *ngIf="question.showRemarks"
