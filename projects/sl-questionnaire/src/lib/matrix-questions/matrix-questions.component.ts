@@ -1,9 +1,9 @@
-import { Component, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import {
-  FormArray,
-  FormBuilder,
-  FormControl,
-  FormGroup,
+  UntypedFormArray,
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import {
@@ -35,18 +35,19 @@ export class MatrixQuestionsComponent implements OnInit {
   addText: string;
   submitText: string;
   cancelText: string;
-  @Input() questionnaireForm: FormGroup;
+  @Input() questionnaireForm: UntypedFormGroup;
   @Input() question: MatrixQuestion;
-  matrixForm: FormGroup;
+  matrixForm: UntypedFormGroup;
   @ViewChild('modalTemplate')
   public modalTemplate: ModalTemplate<IContext, string, string>;
   context: IContext;
   showBadgeAssingModel: boolean;
-  instanceLastUpdated:any[]=[]
+  instanceLastUpdated:any[]=[];
+  matrix:TemplateRef<any>;
   constructor(
     private translate: SlTranslateService,
     public modalService: SuiModalService,
-    public fb: FormBuilder,
+    public fb: UntypedFormBuilder,
     private utils: SlUtilsService
   ) {}
 
@@ -58,7 +59,7 @@ export class MatrixQuestionsComponent implements OnInit {
       this.matrixForm = this.fb.group({}, Validators.required);
       this.questionnaireForm.addControl(
         this.question._id,
-        new FormArray([], [Validators.required])
+        new UntypedFormArray([], [Validators.required])
       );
       this.initializeMatrix();
     });
@@ -74,8 +75,8 @@ export class MatrixQuestionsComponent implements OnInit {
           if (!ques.value) return;
           obj[ques._id] = ques.value;
         });
-        (this.questionnaireForm.controls[this.question._id] as FormArray).push(
-          new FormControl(obj,[this.instanceValidation])
+        (this.questionnaireForm.controls[this.question._id] as UntypedFormArray).push(
+          new UntypedFormControl(obj,[this.instanceValidation])
         );
        let instanceupdatedAt= endTime.reduce(function (x, y) {
           return x > y ? x : y;
@@ -93,7 +94,7 @@ export class MatrixQuestionsComponent implements OnInit {
     //   });
   }
 
-  instanceValidation(control: FormControl) {
+  instanceValidation(control: UntypedFormControl) {
   let value = control.value;
     if (_.isEmpty(value)) {
     return { err: 'Instance not filled' }
@@ -107,7 +108,7 @@ export class MatrixQuestionsComponent implements OnInit {
       JSON.parse(JSON.stringify(this.question.instanceQuestions))
     );
     this.matrixForm.reset();
-    this.formAsArray.push(new FormControl([], [Validators.required]));
+    this.formAsArray.push(new UntypedFormControl([], [Validators.required]));
   }
 
   viewInstance(i): void {
@@ -130,7 +131,7 @@ export class MatrixQuestionsComponent implements OnInit {
   }
 
   get formAsArray() {
-    return this.questionnaireForm.controls[this.question._id] as FormArray;
+    return this.questionnaireForm.controls[this.question._id] as UntypedFormArray;
   }
 
   matrixSubmit(index) {
@@ -177,7 +178,7 @@ export class MatrixQuestionsComponent implements OnInit {
     }
 
     this.question.value.splice(index, 1);
-    (this.questionnaireForm.controls[this.question._id] as FormArray).removeAt(
+    (this.questionnaireForm.controls[this.question._id] as UntypedFormArray).removeAt(
       index
     );
     this.instanceLastUpdated.splice(index,1)

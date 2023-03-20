@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Question } from '../interfaces/questionnaire.type';
 import { SlTranslateService } from '../services/translate.service';
 import { SlQuestionnaireService } from '../services/sl-questionnaire.service';
@@ -11,7 +11,7 @@ import { SlQuestionnaireService } from '../services/sl-questionnaire.service';
 })
 export class CheckboxInputComponent implements OnInit {
   @Input() options;
-  @Input() questionnaireForm: FormGroup;
+  @Input() questionnaireForm: UntypedFormGroup;
   @Input() question: Question;
   hintCloseText: string;
   hintModalNote:string
@@ -32,14 +32,14 @@ export class CheckboxInputComponent implements OnInit {
           this.question.value &&
           (this.question.value as Array<string>).find((_v) => _v == v.value)
         ) {
-          return new FormControl(v.value);
+          return new UntypedFormControl(v.value);
         }
-        return new FormControl('');
+        return new UntypedFormControl('');
       });
 
       this.questionnaireForm.addControl(
         this.question._id,
-        new FormArray(optionControl, this.qService.validate(this.question))
+        new UntypedFormArray(optionControl, this.qService.validate(this.question))
       );
 
       this.question.startTime = this.question.startTime
@@ -54,9 +54,9 @@ export class CheckboxInputComponent implements OnInit {
   }
 
   onChange(oId: string, isChecked: boolean, oIndex: number) {
-    const formArray: FormArray = this.questionnaireForm.get(
+    const formArray: UntypedFormArray = this.questionnaireForm.get(
       this.question._id
-    ) as FormArray;
+    ) as UntypedFormArray;
     if (isChecked) {
       formArray.controls[oIndex].patchValue(oId);
     }

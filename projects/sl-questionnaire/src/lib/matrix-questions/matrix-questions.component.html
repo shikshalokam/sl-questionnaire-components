@@ -45,10 +45,7 @@
   <!--/Header-->
   <!--Content-->
   <div class="sb-modal-content">
-    <sl-input
-      [questions]="context.questions"
-      [questionnaireForm]="matrixForm"
-    ></sl-input>
+    <ng-container [ngTemplateOutlet]="matrix"></ng-container>
   </div>
   <!--/Content-->
 

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { Options } from '@angular-slider/ngx-slider';
 import { Question, Validation } from '../interfaces/questionnaire.type';
 import { SlQuestionnaireService } from '../services/sl-questionnaire.service';
@@ -10,7 +10,7 @@ import { SlQuestionnaireService } from '../services/sl-questionnaire.service';
   styleUrls: ['./range-input.component.scss'],
 })
 export class RangeInputComponent implements OnInit {
-  @Input() questionnaireForm: FormGroup;
+  @Input() questionnaireForm: UntypedFormGroup;
   @Input() question: Question;
   public options:Options={
     step:1,
@@ -24,7 +24,7 @@ export class RangeInputComponent implements OnInit {
     setTimeout(() => {
       this.questionnaireForm.addControl(
         this.question._id,
-        new FormControl(this.question.value || +this.min, [
+        new UntypedFormControl(this.question.value || +this.min, [
           this.qService.validate(this.question),
         ])
       );
