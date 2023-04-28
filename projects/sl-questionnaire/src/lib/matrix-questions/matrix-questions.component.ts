@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import {
   UntypedFormArray,
   UntypedFormBuilder,
@@ -42,7 +42,8 @@ export class MatrixQuestionsComponent implements OnInit {
   public modalTemplate: ModalTemplate<IContext, string, string>;
   context: IContext;
   showBadgeAssingModel: boolean;
-  instanceLastUpdated:any[]=[]
+  instanceLastUpdated:any[]=[];
+  matrix:TemplateRef<any>;
   constructor(
     private translate: SlTranslateService,
     public modalService: SuiModalService,
