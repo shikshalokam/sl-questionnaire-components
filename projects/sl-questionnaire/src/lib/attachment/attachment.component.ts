@@ -24,7 +24,7 @@ export class AttachmentComponent implements OnInit {
   basicUpload(event) {
     const files: FileList = event.target.files;
     let sizeMB = +(files[0].size / 1000 / 1000).toFixed(4);
-    if (sizeMB > 20) {
+    if (sizeMB > 50) {
       this.fileLimitCross();
       return;
     }
@@ -38,7 +38,7 @@ export class AttachmentComponent implements OnInit {
     const alertMeta: AlertMeta = {
       size: 'tiny',
       bodyType: 'text',
-      data: this.translate['frmelmnts'].lbl.fileLimitCross20,
+      data: this.translate['frmelmnts'].lbl.fileLimitCross50,
       buttonClass: 'single-btn',
       acceptText: this.translate['frmelmnts'].btn.ok,
       cancelText: null,
