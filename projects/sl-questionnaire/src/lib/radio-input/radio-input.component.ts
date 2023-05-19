@@ -1,7 +1,7 @@
 import { Output } from '@angular/core';
 import { Input } from '@angular/core';
 import { Component, EventEmitter, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { Question } from '../interfaces/questionnaire.type';
 import { SlTranslateService } from '../services/translate.service';
 import { SlQuestionnaireService } from '../services/sl-questionnaire.service';
@@ -13,7 +13,7 @@ import { SlQuestionnaireService } from '../services/sl-questionnaire.service';
 })
 export class RadioInputComponent implements OnInit {
   @Input() options: any;
-  @Input() questionnaireForm: FormGroup;
+  @Input() questionnaireForm: UntypedFormGroup;
   @Input() question: Question;
   hintCloseText: string;
   hintModalNote:string;
@@ -32,7 +32,7 @@ export class RadioInputComponent implements OnInit {
     setTimeout(() => {
       this.questionnaireForm.addControl(
         this.question._id,
-        new FormControl(
+        new UntypedFormControl(
           this.question.value || null,
           this.qService.validate(this.question)
         )

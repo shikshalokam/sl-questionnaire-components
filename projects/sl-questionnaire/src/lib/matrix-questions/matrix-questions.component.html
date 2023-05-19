@@ -4,7 +4,7 @@
     {{ question?.instanceIdentifier }}
   </button>
 </div>
-<div
+  <div
   class="ui card student-card"
   *ngFor="let instance of question?.value; let i = index"
 >
@@ -27,6 +27,7 @@
   </div>
 </div>
 
+
 <sui-modal
   [mustScroll]="true"
   [isClosable]="true"
@@ -45,10 +46,7 @@
   <!--/Header-->
   <!--Content-->
   <div class="sb-modal-content">
-    <sl-input
-      [questions]="context.questions"
-      [questionnaireForm]="matrixForm"
-    ></sl-input>
+    <ng-container [ngTemplateOutlet]="matrix"></ng-container>
   </div>
   <!--/Content-->
 

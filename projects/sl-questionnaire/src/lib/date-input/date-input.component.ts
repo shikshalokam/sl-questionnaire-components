@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Question, Validation } from '../interfaces/questionnaire.type';
 import { SlTranslateService } from '../services/translate.service';
 import { SlQuestionnaireService } from '../services/sl-questionnaire.service';
@@ -14,7 +14,7 @@ export class DateInputComponent implements OnInit {
   min: Date;
   max: Date;
 
-  @Input() questionnaireForm: FormGroup;
+  @Input() questionnaireForm: UntypedFormGroup;
   @Input() question: Question;
   @Input() autoCaptureText: String;
 
@@ -28,7 +28,7 @@ export class DateInputComponent implements OnInit {
     setTimeout(() => {
       this.questionnaireForm.addControl(
         this.question._id,
-        new FormControl(
+        new UntypedFormControl(
           this.question.value ? new Date(this.question.value as string) : null,
           [this.qService.validate(this.question)]
         )

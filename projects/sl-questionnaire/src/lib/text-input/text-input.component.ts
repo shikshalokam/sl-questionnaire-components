@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Question } from '../interfaces/questionnaire.type';
 import { SlTranslateService } from '../services/translate.service';
 import { SlQuestionnaireService } from '../services/sl-questionnaire.service';
@@ -11,7 +11,7 @@ import { SlQuestionnaireService } from '../services/sl-questionnaire.service';
 })
 export class TextInputComponent implements OnInit {
   text: string;
-  @Input() questionnaireForm: FormGroup;
+  @Input() questionnaireForm: UntypedFormGroup;
   @Input() question : Question;
   placeholder;
 
@@ -25,7 +25,7 @@ export class TextInputComponent implements OnInit {
     setTimeout(() => {
       this.questionnaireForm.addControl(
         this.question._id,
-        new FormControl(this.question.value || null, [
+        new UntypedFormControl(this.question.value || null, [
           this.qService.validate(this.question),
         ])
       );

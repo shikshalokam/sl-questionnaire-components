@@ -11,7 +11,7 @@
   >
     <div [ngClass]="{ content: question.responseType != 'pageQuestions' }">
       <div class="d-flex flex-ai-flex-start flex-jc-space-between">
-        <div
+          <div
           *ngFor="let q of question.question; let qai = index"
           [ngClass]="{
             'mb-20': q.length,
@@ -22,6 +22,7 @@
             {{ question.questionNumber + " .  "}}&nbsp;{{ q }}
           </div>
         </div>
+       
         <div *ngIf="question?.hint">
           <i
             class="icon large lightbulb"
@@ -67,19 +68,25 @@
           [options]="question.options"
           (dependentParent)="toggleQuestion($event)"
         ></sl-checkbox-input>
-        <sl-page-questions
-          *ngIf="
-            question.responseType == reponseType.PAGEQUESTIONS;
-            pageQuestions
-          "
+        <ng-container *ngIf="question.responseType == reponseType.PAGEQUESTIONS;pageQuestions">
+          <sl-input
+          [questionnaireForm]="questionnaireForm"
+          [questions]="question.pageQuestions"
+          ></sl-input>
+        </ng-container>
+        <ng-container  *ngIf="question.responseType == reponseType.MATRIX">
+          <sl-matrix-questions
           [questionnaireForm]="questionnaireForm"
           [question]="question"
-        ></sl-page-questions>
-        <sl-matrix-questions
-          *ngIf="question.responseType == reponseType.MATRIX"
-          [questionnaireForm]="questionnaireForm"
-          [question]="question"
-        ></sl-matrix-questions>
+          #matrixComponent>
+            <ng-template #matrix>
+              <sl-input
+              [questions]="matrixComponent.context.questions"
+              [questionnaireForm]="matrixComponent.matrixForm"
+              ></sl-input>
+            </ng-template>
+          </sl-matrix-questions>
+        </ng-container>
         <sl-ques-remarks
           [question]="question"
           *ngIf="question.showRemarks"

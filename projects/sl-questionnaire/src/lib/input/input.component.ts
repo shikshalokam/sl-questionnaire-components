@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Question, ResponseType } from '../interfaces/questionnaire.type';
 import { SlTranslateService } from '../services/translate.service';
 import { SlQuestionnaireService } from '../services/sl-questionnaire.service';
@@ -11,7 +11,7 @@ import { SlQuestionnaireService } from '../services/sl-questionnaire.service';
 })
 export class InputComponent {
   @Input() questions: Array<Question>;
-  @Input() questionnaireForm: FormGroup;
+  @Input() questionnaireForm: UntypedFormGroup;
   selectedIndex: number;
   dimmerIndex;
   isDimmed;
